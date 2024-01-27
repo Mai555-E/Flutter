@@ -4,7 +4,7 @@ import 'page_body.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
-
+  static const Routes = '/sign in';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,9 +17,9 @@ class LoginScreen extends StatelessWidget {
           endText: "Not yet a member?",
           signState: "Sign up",
           user: false,
+          Route: '/sign in',
         ),
       )),
     );
   }
 }
-

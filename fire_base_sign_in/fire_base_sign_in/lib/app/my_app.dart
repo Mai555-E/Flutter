@@ -9,9 +9,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      /*initialRoute: LoginScreen.Routes,
+      routes: {
+        LoginScreen.Routes: (context) => const LoginScreen(),
+        SignUpScreen.Routes: (context) => const SignUpScreen(),
+      },*/
       theme: ThemeData(primaryColor: Colors.cyan[700]),
       debugShowCheckedModeBanner: false,
-      home: const SignUpScreen(),
+     home: const SignUpScreen(),
     );
   }
 }
