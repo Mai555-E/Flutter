@@ -1,3 +1,4 @@
+import 'package:fire_base_sign_in/UI/begin_page.dart';
 import 'package:fire_base_sign_in/UI/signup_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -13,10 +14,11 @@ class MyApp extends StatelessWidget {
       routes: {
         LoginScreen.Routes: (context) => const LoginScreen(),
         SignUpScreen.Routes: (context) => const SignUpScreen(),
+        BeginPage.Routes: (context) => const BeginPage(),
       },*/
       theme: ThemeData(primaryColor: Colors.cyan[700]),
       debugShowCheckedModeBanner: false,
-     home: const SignUpScreen(),
+      home: const SignUpScreen(),
     );
   }
 }
