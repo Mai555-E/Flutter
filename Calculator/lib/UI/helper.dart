@@ -24,7 +24,7 @@ class Helper {
         }
 
       case '%':
-        _displayedText = (double.parse(_displayedText) / 100).toString();
+        _displayedText = (_displayedText.convertToDouble() / 100).toString();
 
       case '.':
         if (!_displayedText.contains('.')) _displayedText += '.';
@@ -41,4 +41,13 @@ class Helper {
         _displayedText = (_displayedText != '0') ? _displayedText + button : button;
     }
   }
+}
+
+extension ParseNumber on String
+{
+  double convertToDouble(){
+    return  double.parse(this);
+  }
+ 
+
 }
