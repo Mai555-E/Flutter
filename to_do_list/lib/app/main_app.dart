@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:to_do_list/data/local.dart';
+import 'package:to_do_list/ui/resources/theme.dart';
 
 import '../ui/task_screen.dart';
 
@@ -7,9 +10,15 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return  GetMaterialApp(
       debugShowCheckedModeBanner: false,
+      themeMode: ThemeMode.dark,
+      theme: AppTheme.getLightTheme(),
+      locale: Get.deviceLocale,
+      translations: MyLocal(),
+    darkTheme: AppTheme.getDarkTheme(),
       home: TaskScreen(),
+      
     );
   }
 }

@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class AddTaskScreen extends StatelessWidget {
   final Function addTaskCallBack;
-  AddTaskScreen(this.addTaskCallBack);
+  AddTaskScreen(this.addTaskCallBack, {super.key});
 
-String? newTaskTitle;
+  String? newTaskTitle;
   @override
   Widget build(BuildContext context) {
-    
     return Container(
       child: Column(
         children: [
-          SizedBox(height: 12),
+          const SizedBox(height: 12),
           Text(
-            "Add Task",
+            "6".tr,
             textAlign: TextAlign.center,
             style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.indigo[400]),
           ),
@@ -23,22 +23,19 @@ String? newTaskTitle;
             onSubmitted: (newText) {
               newTaskTitle = newText;
             },
-
-             onChanged: (newText) {
+            onChanged: (newText) {
               newTaskTitle = newText;
             },
-
-
-            
           ),
-          SizedBox(height: 15),
+          const SizedBox(height: 15),
           TextButton(
             onPressed: () {
               addTaskCallBack(newTaskTitle);
+              Get.snackbar("4".tr, "3".tr);
             },
             style: TextButton.styleFrom(
-                foregroundColor: Colors.white, backgroundColor: Colors.teal[400], padding: EdgeInsets.symmetric(horizontal: 25)),
-            child: const Text("Add", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                foregroundColor: Colors.white, backgroundColor: Colors.teal[400], padding: const EdgeInsets.symmetric(horizontal: 25)),
+            child: Text("5".tr, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
           )
         ],
       ),
