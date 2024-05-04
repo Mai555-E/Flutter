@@ -1,10 +1,10 @@
-import 'package:electrical_store_mobile/ui/constants.dart';
-import 'package:electrical_store_mobile/ui/provider/mode_provider.dart';
-import 'package:electrical_store_mobile/ui/widgets/details/data_theme_style.dart';
-import 'package:electrical_store_mobile/ui/widgets/home/home_body.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:provider/provider.dart';
+
+import '../resources/constants.dart';
+import '../resources/app_localization.dart';
+import '../resources/data_theme_style.dart';
+import '../details/home_body.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,30 +15,32 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   static IconData change = Icons.light_mode;
+
+  // MyLocalController controllerLang = Get.find();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kPrimaryColor,
-      appBar: homeAppBar(),
+      appBar: homeAppBar(context),
       body: const HomeBody(),
     );
   }
 
-  AppBar homeAppBar() {
+  AppBar homeAppBar(BuildContext context) {
     return AppBar(
       elevation: 2,
-      title: const Text(
-        "مرحبا بكم في متجرنا",
-        style: TextStyle(color: kBackgroundColor),
-      ),
-      backgroundColor: kPrimaryColor,
+      title: Text("Hi".tran(context)),
       centerTitle: true,
       actions: [
-        IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.menu,
-              color: kBackgroundColor,
+        ElevatedButton(
+            onPressed: () => AppLocalization(locale: Get.locale ?? const Locale("en")).changeLang(),
+            style: ElevatedButton.styleFrom(
+                shape: const CircleBorder(), backgroundColor: Colors.white30, elevation: 0, alignment: Alignment.center),
+            child: const Icon(
+              Icons.circle_notifications_outlined,
+              size: 30,
+              color: Colors.white,
+              textDirection: TextDirection.ltr,
             )),
       ],
       leading: IconButton(

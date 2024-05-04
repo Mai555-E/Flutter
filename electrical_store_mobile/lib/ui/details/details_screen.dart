@@ -1,19 +1,20 @@
-import 'package:electrical_store_mobile/ui/constants.dart';
-import 'package:electrical_store_mobile/ui/widgets/details/details_body.dart';
-import 'package:electrical_store_mobile/ui/widgets/home/home_body.dart';
-import 'package:electrical_store_mobile/ui/widgets/home/product_card.dart';
+import '../resources/app_localization.dart';
+
+import '../resources/constants.dart';
+import 'details_body.dart';
+import 'home_body.dart';
+import '../home/product_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../Model/product.dart';
+import '../../model/product.dart';
 
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen({super.key, required this.product});
- final Product product;
+  final Product product;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kPrimaryColor,
       appBar: DetailsAppBar(context),
       body: DetailsBody(product: product),
     );
@@ -21,7 +22,7 @@ class DetailsScreen extends StatelessWidget {
 
   AppBar DetailsAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: kBackgroundColor,
+      backgroundColor: Theme.of(context).primaryColorLight,
       leading: Padding(
         padding: const EdgeInsets.only(right: kDefaultPadding),
         child: IconButton(
@@ -34,10 +35,12 @@ class DetailsScreen extends StatelessWidget {
           ),
         ),
       ),
-      
-      title:  Padding(
+      title: Padding(
         padding: const EdgeInsets.only(right: 30),
-        child: Text("رجوع",style: Theme.of(context).textTheme.bodyMedium,),
+        child: Text(
+          "Back".tran(context),
+          style: Theme.of(context).textTheme.bodyMedium,
+        ),
       ),
     );
   }

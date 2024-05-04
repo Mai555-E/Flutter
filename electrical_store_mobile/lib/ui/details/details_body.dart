@@ -1,6 +1,9 @@
-import 'package:electrical_store_mobile/ui/Model/product.dart';
-import 'package:electrical_store_mobile/ui/constants.dart';
+import '../resources/app_localization.dart';
+
+import '../../model/product.dart';
+import '../resources/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'Color_dot.dart';
 import 'product_image.dart';
@@ -18,9 +21,9 @@ class DetailsBody extends StatelessWidget {
         Container(
           width: double.infinity,
           padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding * 1.5),
-          decoration: const BoxDecoration(
-              color: kBackgroundColor,
-              borderRadius: BorderRadius.only(
+          decoration: BoxDecoration(
+              color: Theme.of(context).primaryColorLight,
+              borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(50),
                 bottomRight: Radius.circular(50),
               )),
@@ -56,19 +59,19 @@ class DetailsBody extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: kDefaultPadding / 2),
                 child: Text(
-                  product.title,
+                  product.title.tran(context),
                   style: Theme.of(context).textTheme.headlineMedium,
                 ),
               ),
               Text(
-                "\$${product.price}:السعر",
+                "\$${product.price}:${"Price".tran(context)}",
                 style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: kSecondaryColor),
               ),
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: kDefaultPadding / 2),
                 padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding * 1.5, vertical: kDefaultPadding / 3),
                 child: Text(
-                  product.description,
+                  product.description.tran(context),
                   style: const TextStyle(fontSize: 12, color: Colors.black),
                 ),
               )

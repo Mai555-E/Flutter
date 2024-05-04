@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../constants.dart';
+import '../resources/constants.dart';
 
 class ColorsDot extends StatelessWidget {
   ColorsDot({super.key, required this.fillText, required this.isSlected});

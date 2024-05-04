@@ -1,14 +1,16 @@
-import 'package:electrical_store_mobile/ui/widgets/details/data_theme_style.dart';
+import '../resources/app_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-import '../../Model/product.dart';
-import '../../constants.dart';
+import '../../model/product.dart';
+import '../resources/constants.dart';
+import '../resources/data_theme_style.dart';
 
 class ProductCard extends StatelessWidget {
-  ProductCard({super.key, required this.products, required this.itemIdex , required this.press});
+  ProductCard({super.key, required this.products, required this.itemIdex, required this.press});
   int itemIdex;
   final Product products;
-  Function()? press ;
+  Function()? press;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -24,7 +26,7 @@ class ProductCard extends StatelessWidget {
                 height: 166,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(22),
-                    color:ThemeDataStyle.currentMode == ThemeMode.light? Colors.white:Theme.of(context).colorScheme.background,
+                    color:Theme.of(context).primaryColor,
                     boxShadow: const [BoxShadow(blurRadius: 25, offset: Offset(0, 15), color: Colors.black26)]),
               ),
               Positioned(
@@ -50,23 +52,26 @@ class ProductCard extends StatelessWidget {
                       child: Column(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(bottom: 8, left: 18),
+                            padding: const EdgeInsets.only(bottom: 8),
                             child: Text(
-                              products.title,
+                              
+                              products.title.tran(context),
+                              textAlign: TextAlign.center,
                               style: Theme.of(context).textTheme.bodyLarge,
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(bottom: 25, left: 18),
+                            padding: const EdgeInsets.only(bottom: 25),
                             child: Text(
-                              products.subTitle,
+                              products.subTitle.tran(context),
+                              textAlign: TextAlign.center,
                               style: Theme.of(context).textTheme.bodySmall,
                             ),
                           ),
                           Container(
                               padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding * 1.5, vertical: kDefaultPadding / 5),
                               decoration: BoxDecoration(color: kSecondaryColor, borderRadius: BorderRadius.circular(22)),
-                              child: Text("السعر:\$${products.price}"))
+                              child: Text("${"Price".tran(context)}:\$${products.price}"))
                         ],
                       ))),
             ],
