@@ -11,14 +11,17 @@ class HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return SafeArea(
         child: Column(children: [
       Expanded(
+      
         child: Stack(children: [
           Container(
               margin: const EdgeInsets.only(top: 70),
-              decoration:  BoxDecoration(
-                  color: Theme.of(context).primaryColorLight, borderRadius: BorderRadius.only(topLeft: Radius.circular(40), topRight: Radius.circular(40)))),
+              decoration: BoxDecoration(
+                  color: Theme.of(context).primaryColorLight,
+                  borderRadius: BorderRadius.only(topLeft: Radius.circular(40), topRight: Radius.circular(40)))),
           const Padding(padding: EdgeInsets.only(top: kDefaultPadding / 2)),
           ListView.builder(
             itemBuilder: (context, index) => ProductCard(
