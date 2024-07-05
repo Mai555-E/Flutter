@@ -1,4 +1,4 @@
-# getx_training
+# getx
 
 A new Flutter project.
 
