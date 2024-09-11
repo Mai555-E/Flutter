@@ -15,24 +15,21 @@ class HomeBody extends StatelessWidget {
     return SafeArea(
         child: Column(children: [
       Expanded(
-      
         child: Stack(children: [
           Container(
               margin: const EdgeInsets.only(top: 70),
               decoration: BoxDecoration(
                   color: Theme.of(context).primaryColorLight,
-                  borderRadius: BorderRadius.only(topLeft: Radius.circular(40), topRight: Radius.circular(40)))),
+                  borderRadius: const BorderRadius.only(topLeft: Radius.circular(40), topRight: Radius.circular(40)))),
           const Padding(padding: EdgeInsets.only(top: kDefaultPadding / 2)),
           ListView.builder(
-            itemBuilder: (context, index) => ProductCard(
-              products: products[index],
-              itemIdex: index,
-              press: () {
-                Get.to(() => DetailsScreen(product: products[index]));
-              },
-            ),
-            itemCount: products.length,
-          )
+              itemBuilder: (context, index) => ProductCard(
+                  products: products[index],
+                  itemIdex: index,
+                  press: () {
+                    Get.to(() => DetailsScreen(product: products[index]));
+                  }),
+              itemCount: products.length)
         ]),
       ),
     ]));

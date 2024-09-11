@@ -18,7 +18,8 @@ class App extends StatelessWidget {
       splitScreenMode: true,
       child: GetMaterialApp(
         useInheritedMediaQuery: true,
-        locale: DevicePreview.locale(context),
+        locale: Locale(readLocale()),
+        
         builder: DevicePreview.appBuilder,
         title: "Store app",
         theme: ThemeDataStyle.lightTheme,

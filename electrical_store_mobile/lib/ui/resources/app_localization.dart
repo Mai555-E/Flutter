@@ -3,17 +3,21 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class AppLocalization {
-  late  Locale? locale;
+  late Locale? locale;
   AppLocalization({this.locale});
 
   static AppLocalization? of(BuildContext) {
     return Localizations.of<AppLocalization>(BuildContext, AppLocalization);
   }
 
-  void changeLang() => Get.updateLocale( locale = locale!.languageCode == 'en'? Locale("ar"): Locale("en"));
-  
+  void changeLang() => {
+        Get.updateLocale(locale = locale!.languageCode == 'en' ? Locale("ar") : Locale("en")),
+        GetStorage().write("lang", locale!.languageCode),
+        print(locale!.languageCode)
+      };
 
   static LocalizationsDelegate<AppLocalization> delegats = AppLocalizationDelegates();
 
@@ -34,7 +38,6 @@ class AppLocalization {
 class AppLocalizationDelegates extends LocalizationsDelegate<AppLocalization> {
   @override
   bool isSupported(Locale locale) {
-   
     return ["en", "ar"].contains(locale.languageCode);
   }
 
@@ -43,7 +46,6 @@ class AppLocalizationDelegates extends LocalizationsDelegate<AppLocalization> {
 
   @override
   Future<AppLocalization> load(Locale locale) async {
-    
     AppLocalization localization = AppLocalization(locale: locale);
     await localization.loadLangJson();
     return localization;
@@ -52,4 +54,9 @@ class AppLocalizationDelegates extends LocalizationsDelegate<AppLocalization> {
 
 extension translateString on String {
   String tran(BuildContext context) => AppLocalization.of(context)!.translate(this);
+}
+
+String readLocale() {
+  print("*******************");
+  return GetStorage().read<String>("lang") ?? "ar";
 }

@@ -6,12 +6,17 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 class AppLocalization {
-  late final Locale? locale;
+  late Locale? locale;
   AppLocalization({this.locale});
 
-  static AppLocalization? of(BuildContext context) {
-    return Localizations.of<AppLocalization>(context, AppLocalization);
+  static AppLocalization? of(BuildContext) {
+    return Localizations.of<AppLocalization>(BuildContext, AppLocalization);
   }
+
+  void changeLang() => {
+        Get.updateLocale(locale = locale!.languageCode == 'en' ? Locale("ar") : Locale("en")),
+        GetStorage().write("lang", locale!.languageCode),
+      };
 
   static LocalizationsDelegate<AppLocalization> delegats = AppLocalizationDelegates();
 
@@ -25,6 +30,7 @@ class AppLocalization {
       return MapEntry(key, value.toString());
     });
   }
+
 
   String translate(String key) => _localizationString[key] ?? "";
 }
@@ -46,18 +52,10 @@ class AppLocalizationDelegates extends LocalizationsDelegate<AppLocalization> {
   }
 }
 
-class MyLocalController extends GetxController {
-  String? change = 'en';
-  final saveLocal = GetStorage();
-  void changeLang(String langCode) {
-    Locale locale = Locale(langCode);
+extension translateString on String {
+  String tran(BuildContext context) => AppLocalization.of(context)!.translate(this);
+}
 
-    change = langCode;
-
-    Get.updateLocale(locale);
-
-    saveLocal.write("langCode", locale);
-
-    //locale = saveLocal.read("langCode");
-  }
+String readLocale() {
+  return GetStorage().read<String>("lang") ?? "ar";
 }
